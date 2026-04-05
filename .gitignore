@@ -1,0 +1,43 @@
+# ========================
+# Node / React (frontend)
+# ========================
+node_modules/
+frontend/node_modules/
+dist/
+build/
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================
+# Python (backend)
+# ========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ========================
+# Secrets (VERY IMPORTANT)
+# ========================
+backend/phishing-backend/credentials.json
+.env
+.env.*
+
+# ========================
+# OS / Editor files
+# ========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ========================
+# Misc
+# ========================
+*.log
+*.tmp
+*.swp

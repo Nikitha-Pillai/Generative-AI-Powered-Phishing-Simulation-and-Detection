@@ -1,0 +1,17 @@
+flask
+flask-cors
+google-auth
+google-auth-oauthlib
+google-api-python-client
+firebase-admin
+beautifulsoup4
+numpy==1.26.4
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.4.0+cpu
+transformers
+accelerate
+huggingface_hub
+lime
+psutil
+requests
+sentencepiece
