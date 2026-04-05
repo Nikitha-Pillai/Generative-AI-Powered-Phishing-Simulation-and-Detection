@@ -11,7 +11,7 @@ function Dashboard() {
   useEffect(() => {
     fetch(`${API_URL}/api/emails`)
       .then((res) => res.json())
-      .then((data) => setEmails(data))
+      .then((data) => setEmails(data.reverse()))
       .catch((err) => console.error("Error fetching emails:", err));
   }, []);
 
@@ -24,7 +24,31 @@ function Dashboard() {
       score,
     }));
   };
+  const cleanEmailContent = (text) => {
+  if (!text) return "";
 
+  if (text.trim().startsWith("<")) {
+    const doc = new DOMParser().parseFromString(text, "text/html");
+    doc.querySelectorAll("style, script, head").forEach(el => el.remove());
+    text = doc.body.innerText || doc.body.textContent || "";
+  }
+
+  return text
+    .replace(/&#847;|&zwnj;|&#8199;|&#65279;|&#173;|&#8203;|&#8204;|&#8205;/g, "")
+    .replace(/[\u00AD\u200B\u200C\u200D\uFEFF\u034F\u2007]/g, "")
+    .replace(/\s*<\s*$/gm, "")
+    .replace(/[-]{5,}/g, "")
+    .replace(/Forwarded message/g, "")
+    .replace(/From:.*\n?/g, "")
+    .replace(/Date:.*\n?/g, "")
+    .replace(/To:.*\n?/g, "")
+    .replace(/Subject:.*\n?/g, "")
+    .replace(/^\s*\*\s*$/gm, "")
+    .replace(/^\s*[•\-\*]\s*/gm, "")
+    .replace(/^\s+$/gm, "")
+    .replace(/\n{2,}/g, "\n")
+    .trim();
+};
   return (
     <div className="app">
       <h1 className="title">🛡️ AI Phishing Detection Dashboard</h1>
@@ -81,7 +105,8 @@ function Dashboard() {
                     <tr className="expanded-row">
                       <td colSpan="3">
                         <strong>Email Body:</strong>
-                        <p>{email.content}</p>
+                        <p style={{ whiteSpace: "pre-line" }}>{cleanEmailContent(email.content)}</p>
+
 
                         <br />
 
@@ -91,18 +116,24 @@ function Dashboard() {
                           <div className="lime-box">
                             {parseLime(email.lime_explanation)
                               .sort((a, b) => Math.abs(b.score) - Math.abs(a.score))
-                              .map((item, i) => (
-                                <span
-                                  key={i}
-                                  className={
-                                    item.score > 0
-                                      ? "lime-word positive"
-                                      : "lime-word negative"
-                                  }
-                                >
-                                  {item.word} ({item.score.toFixed(2)})
-                                </span>
-                              ))}
+                              .map((item, i) => {
+                                const v = parseFloat(item.score);
+                                return (
+                                  <span
+                                    key={i}
+                                    className={
+                                      v > 0.001
+                                        ? "lime-word negative"
+                                        : v < -0.001
+                                        ? "lime-word positive"
+                                        : "lime-word neutral"
+                                    }
+                                  >
+                                    {item.word} ({item.score.toFixed(2)})
+                                  </span>
+                              );
+                              })
+                              }
                           </div>
                         ) : (
                           <p className="no-lime">
