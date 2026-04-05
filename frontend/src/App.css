@@ -1,0 +1,139 @@
+.app {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.table-container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+.email-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.email-table thead {
+  background-color: #1f2937;
+  color: white;
+}
+
+.email-table th {
+  padding: 18px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.email-table th:nth-child(2),
+.email-table th:nth-child(3) {
+  text-align: center;
+}
+
+.row {
+  cursor: pointer;
+  transition: background 0.25s ease;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.row:hover {
+  background-color: #f1f5f9;
+}
+
+.row.active {
+  background-color: #eef2ff;
+}
+
+.email-table td {
+  padding: 18px;
+}
+
+.subject {
+  font-weight: 500;
+  color: #111827;
+}
+
+.center {
+  text-align: center;
+}
+
+.confidence {
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.legit {
+  background-color: #dcfce7;
+  color: #065f46;
+}
+
+.phishing {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.expanded-row td {
+  background-color: #f3f4f6;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.expanded-row strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.empty {
+  text-align: center;
+  color: #6b7280;
+}
+.lime-box{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.lime-word{
+  padding:4px 8px;
+  border-radius:6px;
+  font-size:13px;
+}
+
+.lime-word.positive{
+  background:#ffd6d6;
+  color:#b30000;
+}
+
+.lime-word.negative{
+  background:#d6ffd6;
+  color:#006600;
+}
+
+.no-lime{
+  color:#777;
+  font-size:13px;
+}
