@@ -13,7 +13,7 @@ STEP 1: Clone Repository
 git clone https://github.com/your-repo/email-detection.git
 cd email-detection
 
-🔥 STEP 2: Backend Setup (Flask)
+ STEP 2: Backend Setup (Flask)
 2.1 Create Virtual Environment
 python -m venv venv
 
@@ -44,7 +44,9 @@ numpy
 Then install:
 
 pip install -r requirements.txt
-🔥 STEP 3: Google Cloud Setup
+
+
+STEP 3: Google Cloud Setup
 3.1 Enable APIs
 
 Enable:
@@ -58,11 +60,14 @@ Add redirect URI:
 http://localhost:7860/oauth2callback
 Download credentials.json
 Place inside project root
-🔥 STEP 4: Firebase Setup
+
+STEP 4: Firebase Setup
+
 4.1 Create Firebase Project
 Go to Firebase Console
 Create new project
 Enable Firestore Database
+
 4.2 Generate Service Account Key
 Project Settings
 Service Accounts
@@ -75,10 +80,12 @@ firebase_key.json
 
 Place in root folder.
 
-🔥 STEP 5: HuggingFace Setup
+ STEP 5: HuggingFace Setup
+
 5.1 Create HuggingFace Token
 Go to https://huggingface.co/settings/tokens
 Generate Access Token
+
 5.2 Set Environment Variable
 
 Windows:
@@ -88,37 +95,44 @@ set HF_TOKEN=your_token_here
 Mac/Linux:
 
 export HF_TOKEN=your_token_here
-🔥 STEP 6: Environment Variables
+
+STEP 6: Environment Variables
 
 Create .env file:
 
 SECRET_KEY=your_secret_key
 HF_TOKEN=your_huggingface_token
 REDIRECT_URI=http://localhost:7860/oauth2callback
-🔥 STEP 7: Run Backend
+
+STEP 7: Run Backend
 python app.py
 
 Server runs at:
 
 http://localhost:7860
-🔥 STEP 8: Frontend Setup (React)
+
+STEP 8: Frontend Setup (React)
 
 Navigate to frontend folder:
 
 cd frontend
 npm install
+
 8.1 Update API URL
 
 Inside Dashboard.js:
 
 const API_URL = "http://localhost:7860";
+
 8.2 Start React App
 npm start
 
 Frontend runs at:
 
 http://localhost:3000
-🔐 STEP 9: Connect Gmail
+
+
+ STEP 9: Connect Gmail
 
 Visit:
 
@@ -126,17 +140,18 @@ http://localhost:7860/login
 
 Grant Gmail permission.
 
-📡 STEP 10: Start Gmail Watch
+ STEP 10: Start Gmail Watch
 http://localhost:7860/start-watch
 
 This enables real-time email monitoring.
 
-🤖 Model Loading
+ Model Loading
 BERT model downloads automatically from HuggingFace
 Stored in local folder bert_model/
 Loaded into CPU memory
 Inference runs using PyTorch
-📊 API Endpoints
+
+API Endpoints
 Endpoint	Method	Description
 /api/emails	GET	Get all processed emails
 /api/low-confidence	GET	Get emails with low confidence
@@ -145,7 +160,9 @@ Endpoint	Method	Description
 /reload-model	POST	Reload BERT model
 /status	GET	System status
 /health	GET	Health check
-🔁 Retraining Flow
+
+
+Retraining Flow
 Low confidence emails stored
 User submits feedback
 Feedback stored in Firestore
@@ -153,4 +170,10 @@ If threshold reached (20 per class)
 Retraining pipeline triggered
 Model updated on HuggingFace
 Backend reloads new model
-🧠 LIME Explanation
+
+
+ LIME Explanation
+ Uses LimeTextExplainer
+Generates word-level importance scores
+Positive score → phishing indicator
+Negative score → legitimate indicator
