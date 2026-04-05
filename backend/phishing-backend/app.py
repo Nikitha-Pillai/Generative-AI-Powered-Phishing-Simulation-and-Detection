@@ -651,8 +651,9 @@ def trigger_retraining():
         daemon=True
     ).start()
  
-    return jsonify({"message": "Retraining started in background"})
- 
+    return jsonify({
+        "message": "Pipeline started — will retrain only if threshold of 20 emails per class is met"
+    })
  
 @app.route("/retraining-status")
 def retraining_status():
