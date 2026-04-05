@@ -7,10 +7,22 @@ dist/
 build/
 .vite/
 
+# ========================
+# Cloud Functions
+# ========================
+cloud-functions/node_modules/
+cloud-functions/.env
+cloud-functions/.env.*
+
+# ========================
 # Logs
+# ========================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+firebase-debug.log
+firebase-debug.*.log
+*.log
 
 # ========================
 # Python (backend)
@@ -36,8 +48,12 @@ Thumbs.db
 .idea/
 
 # ========================
+# Firebase
+# ========================
+.firebase/
+
+# ========================
 # Misc
 # ========================
-*.log
 *.tmp
 *.swp
