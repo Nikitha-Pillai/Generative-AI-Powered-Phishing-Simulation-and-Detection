@@ -58,7 +58,7 @@ def is_valid_email(text):
 
 # ==========================================================
 # GENERATE BOTH CLASSES — 5 Phishing + 5 Legitimate
-# per feedback email
+# for each feedback email
 # ==========================================================
 
 def generate_both_classes(llm_model, llm_tokenizer, subject, content, num=5):
