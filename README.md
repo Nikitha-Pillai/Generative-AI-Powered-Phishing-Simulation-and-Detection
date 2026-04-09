@@ -67,8 +67,18 @@ and balanced precision-recall across all metrics.
 - Adaptive data: Generated using TinyLlama during retraining
 
 ## Project Structure
+```text
 phishing-detection-system/
+│
 ├── backend/
+│   ├── model_training/                  
+│   │   ├── bert_training_mixed.ipynb   #training code of BERT with LIME explanation and confusion matrix
+│   │   ├── distilbert_training.ipynb   #training code of DistilBERT with LIME explanation and confusion matrix
+│   │   ├── tiny_llama.ipynb            #training code of Tiny Llama 
+│   │   ├── VICUNA_Phishing.ipynb       #training and generation code of phishing emails using Vicuna 
+│   │   ├── VICUNAS_Safe.ipynb          #training and generation code of legitimate emails using Vicuna 
+│   │   └── xlm_training_mixed.ipynb    #training code of XLM-RoBERTa with LIME explanation and confusion matrix
+│   │
 │   └── phishing-backend/
 │       ├── app.py              # Flask backend
 │       ├── pipeline.py         # Adaptive learning pipeline
@@ -80,8 +90,9 @@ phishing-detection-system/
 │       ├── Feedback.jsx        # Human review interface
 │       └── App.jsx             # Main application
 └── cloud-functions/
-└── index.js                # Firebase auto-trigger function
+    └── index.js                # Firebase auto-trigger function
 
+```
 ## How It Works
 
 ### Real-Time Detection Flow
