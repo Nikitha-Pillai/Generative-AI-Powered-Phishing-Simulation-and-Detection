@@ -45,7 +45,7 @@ class EmailDataset(Dataset):
         }
 
 # ==========================================================
-# VALIDATE EMAIL — relaxed, just check length
+# VALIDATE The EMAIL — relaxed, just check length
 # ==========================================================
 
 def is_valid_email(text):
