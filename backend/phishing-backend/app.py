@@ -294,7 +294,7 @@ def get_gmail_service():
     return build("gmail", "v1", credentials=creds)
  
 # ==========================================================
-# EMAIL PROCESSING — real-time, unaffected by pipeline
+# EMAIL PROCESSING — real-time
 # ==========================================================
  
 def process_latest_email():
